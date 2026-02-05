@@ -8,16 +8,39 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
 
-body { background: var(--light); height: 100vh; width: 100vw; overflow: hidden; }
+body {
+    /* Ganti background lama dengan Gradasi Hangat (Sunny Morning) */
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
 
 /* LAYOUT UTAMA */
 .view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; z-index: 10; opacity: 0; transition: opacity 0.3s; }
 .view.active { display: flex; opacity: 1; }
 
 /* LANDING PAGE */
-#landing-view { background: white; padding: 2rem; align-items: center; justify-content: center; }
+#landing-view {
+    /* Ubah background jadi transparan */
+    background: transparent; 
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+}
 .brand-header { margin-bottom: 2rem; text-align: center; }
-.brand-header h1 { font-size: 2.2rem; background: linear-gradient(to right, #2563eb, #9333ea); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.brand-header h1 {
+    font-size: 2.2rem;
+    color: white; /* Jadi putih */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Tambah bayangan */
+    background: none; /* Hapus efek gradasi text sebelumnya */
+    -webkit-text-fill-color: initial; /* Reset fill color */
+}
+
+.brand-header p {
+    color: white;
+    opacity: 0.9;
+}
 
 .grid-menu { display: grid; grid-template-columns: 1fr; gap: 0.8rem; width: 100%; max-width: 400px; padding-bottom: 50px; overflow-y: auto; }
 
