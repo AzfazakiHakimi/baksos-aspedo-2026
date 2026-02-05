@@ -480,6 +480,20 @@ button {
     font-size: 1.1rem;
 }
 
+.target-btn.active-red {
+    background: #ef4444;
+    color: white;
+    border: none;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
+}
+
+.target-btn.active-green {
+    background: #10b981;
+    color: white;
+    border: none;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+}
+
 #custom-alert-overlay {
     position: fixed;
     top: 0;

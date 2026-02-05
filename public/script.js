@@ -104,6 +104,17 @@ function initAdmin() {
     ui.views.landing.classList.remove('active');
     ui.views.admin.classList.add('active');
 
+    ALL_DIVISIONS.forEach(div => {
+        const btn = document.querySelector(`.target-btn[data-target="${div}"]`);
+        if (!btn) return;
+
+        db.ref('divisions/' + div).on('value', snap => {
+            const data = snap.val();
+            btn.classList.toggle('active-red', data && data.status === 'active');
+            btn.classList.toggle('active-green', !data || data.status !== 'active');
+        });
+    });
+
     document.querySelectorAll('.target-btn').forEach(btn => {
         btn.onclick = () => {
             const target = btn.getAttribute('data-target');
