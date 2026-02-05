@@ -11,8 +11,17 @@ const firebaseConfig = {
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-const PASSWORDS = { MC:'mc1', Konsum:'konsum1', Perkap:'perkap1', Band:'band1', PDD:'pdd1', ADMIN:'admin1' };
-const ALL_DIVISIONS = ['MC', 'Konsum', 'Perkap', 'Band', 'PDD'];
+const ALL_DIVISIONS = ['MC', 'Konsum', 'Perkap', 'Band', 'PDD', 'Kebersihan'];
+
+const PASSWORDS = {
+    MC:'mc1',
+    Konsum:'konsum1',
+    Perkap:'perkap1',
+    Band:'band1',
+    PDD:'pdd1',
+    Kebersihan:'kebersihan1',
+    ADMIN:'admin1'
+};
 
 const ui = {
     views: {
