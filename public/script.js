@@ -77,7 +77,6 @@ window.closeAlert = function() {
     setTimeout(() => ui.alert.overlay.style.display = 'none', 300);
 }
 
-// --- NAVIGATION ---
 window.openLogin = function(target) {
     currentTarget = target;
     ui.login.title.innerText = target === 'ADMIN' ? 'Akses Admin' : target;
