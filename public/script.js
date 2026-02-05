@@ -45,24 +45,7 @@ function showAlert(title, msg, icon='✨') {
     ui.alert.icon.innerText = icon;
     ui.alert.title.innerText = title;
     ui.alert.msg.innerText = msg;
-    ui.alert.overlay.style.display = 'flex';
-    setTimeout(() => ui.alert.overlay.classList.add('active'), 100);
-}
-
-function showConfirm(title, msg, onYes) {
-    ui.alert.icon.innerText = '❓';
-    ui.alert.title.innerText = title;
-    ui.alert.msg.innerText = msg;
-    ui.alert.actions.innerHTML = `
-        <button class="alert-btn btn-cancel" onclick="closeAlert()">Batal</button>
-        <button class="alert-btn btn-ok" id="confirm-yes-btn">Kirim</button>
-    `;
-    
-    document.getElementById('confirm-yes-btn').onclick = () => {
-        closeAlert();
-        onYes();
-    };
-
+    ui.alert.actions.innerHTML = `<button class="alert-btn btn-ok" onclick="closeAlert()">Oke</button>`;
     ui.alert.overlay.style.display = 'flex';
     setTimeout(() => ui.alert.overlay.classList.add('active'), 10);
 }
@@ -116,16 +99,13 @@ function initAdmin() {
             }
 
             if (target === 'ALL') {
-                showConfirm('Broadcast', 'Kirim pesan ke SEMUA divisi?', () => {
-                    ALL_DIVISIONS.forEach(div => sendToFirebase(div, msg));
-                    showAlert('Sukses', 'Pesan terkirim ke semua!', '🚀');
-                });
+                ALL_DIVISIONS.forEach(div => sendToFirebase(div, msg));
             } else {
-                showConfirm('Konfirmasi', `Kirim ke ${target}?`, () => {
-                    sendToFirebase(target, msg);
-                    showAlert('Sukses', `Terkirim ke ${target}`, '✅');
-                });
+                sendToFirebase(target, msg);
             }
+
+            ui.adminInput.value = '';
+            ui.adminInput.focus();
         };
     });
 }

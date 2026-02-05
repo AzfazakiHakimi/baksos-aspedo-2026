@@ -556,11 +556,6 @@ button {
     transform: scale(0.96);
 }
 
-.btn-cancel {
-    background: #f1f5f9;
-    color: var(--text-muted);
-}
-
 .btn-ok {
     background: var(--text-main);
     color: white;
