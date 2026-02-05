@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
     <div id="custom-alert-overlay">
         <div class="alert-box">
             <span class="alert-icon" id="alert-icon">✨</span>
@@ -31,6 +31,7 @@
             <button class="div-card" onclick="openLogin('Band')">Band</button>
             <button class="div-card" onclick="openLogin('PDD')">PDD</button>
         </div>
+
         <div class="admin-trigger" onclick="openLogin('ADMIN')">Khusus Firsya</div>
     </div>
 
@@ -47,8 +48,10 @@
         <div class="status-indicator">
             <span id="user-division-name">DIVISI</span>
             <button onclick="location.reload()" class="btn-logout">
-                Keluar <span>➔</span>
+                Keluar
             </button>
+        </div>
+
         <h1 id="screen-message"></h1>
         <button id="confirm-btn" class="hidden">TERIMA PESAN</button>
     </div>

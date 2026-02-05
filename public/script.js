@@ -1,4 +1,3 @@
-// --- KONFIGURASI FIREBASE ---
 const firebaseConfig = {
     apiKey: "AIzaSyC2DIO1IrQwn_vNadYlwnI5oj4oe5W0IxM",
     authDomain: "aspedo-7753e.firebaseapp.com",
@@ -12,11 +11,9 @@ const firebaseConfig = {
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// --- DATA ---
 const PASSWORDS = { 'MC':'mc1', 'Konsum':'konsum1', 'Perkap':'perkap1', 'Band':'band1', 'PDD':'pdd1', 'ADMIN':'admin1' };
 const ALL_DIVISIONS = ['MC', 'Konsum', 'Perkap', 'Band', 'PDD'];
 
-// --- UI ELEMENTS ---
 const ui = {
     views: {
         landing: document.getElementById('landing-view'),
@@ -44,7 +41,6 @@ const ui = {
 let currentTarget = null;
 let currentDivision = null;
 
-// --- CUSTOM ALERT SYSTEM ---
 function showAlert(title, msg, icon='✨') {
     ui.alert.icon.innerText = icon;
     ui.alert.title.innerText = title;
@@ -89,7 +85,6 @@ window.closeLogin = function() {
     ui.views.login.classList.remove('active');
 }
 
-// --- LOGIN LOGIC ---
 function attemptLogin() {
     const input = ui.login.input.value;
     if (PASSWORDS[currentTarget] && input === PASSWORDS[currentTarget]) {
@@ -107,7 +102,6 @@ ui.login.input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') attemptLogin();
 });
 
-// --- ADMIN LOGIC ---
 function initAdmin() {
     ui.views.landing.classList.remove('active');
     ui.views.admin.classList.add('active');
@@ -150,7 +144,6 @@ window.clearInput = function() {
     ui.adminInput.focus();
 }
 
-// --- USER LOGIC ---
 function initUser(div) {
     currentDivision = div;
     ui.views.landing.classList.remove('active');
