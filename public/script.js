@@ -10,11 +10,13 @@ const ui = {
         admin: document.getElementById('admin-view'),
         login: document.getElementById('login-modal')
     },
+
     login: {
         title: document.getElementById('login-title'),
         input: document.getElementById('password-input'),
         btn: document.getElementById('login-btn')
     },
+
     alert: {
         overlay: document.getElementById('custom-alert-overlay'),
         icon: document.getElementById('alert-icon'),
@@ -22,6 +24,7 @@ const ui = {
         msg: document.getElementById('alert-msg'),
         actions: document.getElementById('alert-actions')
     },
+    
     adminInput: document.getElementById('admin-input'),
     userMsg: document.getElementById('screen-message'),
     userBtn: document.getElementById('confirm-btn')

@@ -1,23 +1,33 @@
 const fs = require('fs');
 const path = require('path');
 
-const firebaseConfig = process.env.FIREBASE_JSON; 
+const firebaseConfig = process.env.FIREBASE_JSON;
 const passwordsConfig = process.env.PASSWORDS_JSON;
 
 if (!firebaseConfig || !passwordsConfig) {
-    console.error("ERROR: Env Variables belum setting!");
-    process.exit(1);
+  console.error("ERROR: Env Variables FIREBASE_JSON atau PASSWORDS_JSON belum diset!");
+  process.exit(1);
 }
 
-const content = `const SECRETS = {
-    firebase: ${firebaseConfig},
-    passwords: ${passwordsConfig}
-};`;
+const content = `
+const SECRETS = {
+  firebase: ${firebaseConfig},
+  passwords: ${passwordsConfig}
+};
 
-if (!fs.existsSync('./public')){
-    fs.mkdirSync('./public');
+const firebaseConfig = SECRETS.firebase;
+const PASSWORDS = SECRETS.passwords;
+`;
+
+const publicDir = path.join(__dirname, 'public');
+
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir);
 }
 
-fs.writeFileSync('./public/secrets.js', content);
+fs.writeFileSync(
+  path.join(publicDir, 'secrets.js'),
+  content.trim()
+);
 
-console.log("SUCCESS: secrets.js berhasil dibuat di dalam folder public!");
+console.log("SUCCESS: public/secrets.js berhasil dibuat");
