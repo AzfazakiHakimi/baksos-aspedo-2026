@@ -1,13 +1,3 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyC2DIO1IrQwn_vNadYlwnI5oj4oe5W0IxM",
-    authDomain: "aspedo-7753e.firebaseapp.com",
-    databaseURL: "https://aspedo-7753e-default-rtdb.asia-southeast1.firebasedatabase.app/",
-    projectId: "aspedo-7753e",
-    storageBucket: "aspedo-7753e.firebasestorage.app",
-    messagingSenderId: "246861248788",
-    appId: "1:246861248788:web:fa14df35f9e9e57ca3ea01"
-};
-
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
