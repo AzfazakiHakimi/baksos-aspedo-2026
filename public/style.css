@@ -254,7 +254,7 @@ transform: scale(0.98);
     font-size: 0.85rem;
     letter-spacing: 0.5px;
     display: flex;
-    align-items: center;
+    align-items: end;
     gap: 8px;
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
