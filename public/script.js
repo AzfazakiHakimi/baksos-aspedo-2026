@@ -167,7 +167,7 @@ function initUser(div) {
             if (navigator.vibrate) navigator.vibrate([500, 200, 500]);
         } else {
             ui.views.user.className = 'view bg-green active';
-            ui.userMsg.innerText = 'STANDBY';
+            ui.userMsg.innerText = '';
             ui.userBtn.classList.add('hidden');
         }
     });
