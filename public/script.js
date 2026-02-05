@@ -45,9 +45,8 @@ function showAlert(title, msg, icon='✨') {
     ui.alert.icon.innerText = icon;
     ui.alert.title.innerText = title;
     ui.alert.msg.innerText = msg;
-    ui.alert.actions.innerHTML = `<button class="alert-btn btn-ok" onclick="closeAlert()">Oke</button>`;
     ui.alert.overlay.style.display = 'flex';
-    setTimeout(() => ui.alert.overlay.classList.add('active'), 10);
+    setTimeout(() => ui.alert.overlay.classList.add('active'), 100);
 }
 
 function showConfirm(title, msg, onYes) {
