@@ -244,6 +244,22 @@ letter-spacing: 0.5px;
 transform: scale(0.98);
 }
 
+#user-division-name {
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: default;
+    position: absolute;
+    left: 10px;
+    z-index: 10;
+}
+
 .btn-logout {
     background: #ef4444;
     color: white;
@@ -254,10 +270,13 @@ transform: scale(0.98);
     font-size: 0.85rem;
     letter-spacing: 0.5px;
     display: flex;
-    align-items: end;
+    align-items: center;
     gap: 8px;
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    right: 10px;
+    z-index: 10;
 }
 
 .btn-logout:hover {
@@ -295,6 +314,7 @@ transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
 .status-indicator {
 display: flex;
+position: relative;
 justify-content: space-between;
 align-items: center;
 width: 100%;
