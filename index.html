@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Baksos ASPEDO 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="landing-view" class="view active">
+        <div class="brand-header">
+            <h1>ASPEDO 2026</h1>
+            <p>Realtime Comm System</p>
+        </div>
+        <div class="grid-menu">
+            <button class="div-card" onclick="openLogin('MC')">MC</button>
+            <button class="div-card" onclick="openLogin('Konsum')">Konsum</button>
+            <button class="div-card" onclick="openLogin('Perkap')">Perkap</button>
+            <button class="div-card" onclick="openLogin('Band')">Band</button>
+            <button class="div-card" onclick="openLogin('PDD')">PDD</button>
+        </div>
+        <div class="admin-trigger" onclick="openLogin('ADMIN')">Admin Access</div>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="login-title">Login</h2>
+            <input type="password" id="password-input" placeholder="Masukkan Kode Akses" autocomplete="off">
+            <button id="login-btn">Masuk</button>
+            <button class="close-btn" onclick="closeLogin()">Batal</button>
+        </div>
+    </div>
+
+    <div id="user-view" class="view">
+        <div class="status-indicator">
+            <span id="user-division-name">DIVISI</span>
+            <button class="logout-btn" onclick="location.reload()">Keluar</button>
+        </div>
+        <div class="message-container">
+            <h1 id="screen-message">STANDBY</h1>
+        </div>
+        <button id="confirm-btn" class="hidden">KONFIRMASI DITERIMA</button>
+    </div>
+
+    <div id="admin-view" class="view">
+        <div class="admin-top">
+            <h2>Control Panel</h2>
+            <button class="logout-mini" onclick="location.reload()">Exit</button>
+        </div>
+        
+        <div class="input-wrapper">
+            <textarea id="admin-input" placeholder="Tulis pesan instruksi..."></textarea>
+            <div class="clear-input" onclick="clearInput()">✕</div>
+        </div>
+
+        <div class="target-grid">
+            <button class="target-btn" data-target="MC">MC</button>
+            <button class="target-btn" data-target="Konsum">Konsum</button>
+            <button class="target-btn" data-target="Perkap">Perkap</button>
+            <button class="target-btn" data-target="Band">Band</button>
+            <button class="target-btn" data-target="PDD">PDD</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="secrets.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
