@@ -11,7 +11,7 @@ const firebaseConfig = {
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-const PASSWORDS = { 'MC':'mc1', 'Konsum':'konsum1', 'Perkap':'perkap1', 'Band':'band1', 'PDD':'pdd1', 'ADMIN':'admin1' };
+const PASSWORDS = { MC:'mc1', Konsum:'konsum1', Perkap:'perkap1', Band:'band1', PDD:'pdd1', ADMIN:'admin1' };
 const ALL_DIVISIONS = ['MC', 'Konsum', 'Perkap', 'Band', 'PDD'];
 
 const ui = {
@@ -50,10 +50,26 @@ function showAlert(title, msg, icon='✨') {
     setTimeout(() => ui.alert.overlay.classList.add('active'), 10);
 }
 
+function showConfirm(title, msg, onYes) {
+    ui.alert.icon.innerText = '❓';
+    ui.alert.title.innerText = title;
+    ui.alert.msg.innerText = msg;
+    ui.alert.actions.innerHTML = `
+        <button class="alert-btn btn-cancel" onclick="closeAlert()">Batal</button>
+        <button class="alert-btn btn-ok" id="confirm-yes-btn">Kirim</button>
+    `;
+    document.getElementById('confirm-yes-btn').onclick = () => {
+        closeAlert();
+        onYes();
+    };
+    ui.alert.overlay.style.display = 'flex';
+    setTimeout(() => ui.alert.overlay.classList.add('active'), 10);
+}
+
 window.closeAlert = function() {
     ui.alert.overlay.classList.remove('active');
     setTimeout(() => ui.alert.overlay.style.display = 'none', 300);
-}
+};
 
 window.openLogin = function(target) {
     currentTarget = target;
@@ -61,11 +77,11 @@ window.openLogin = function(target) {
     ui.login.input.value = '';
     ui.views.login.classList.add('active');
     setTimeout(() => ui.login.input.focus(), 100);
-}
+};
 
 window.closeLogin = function() {
     ui.views.login.classList.remove('active');
-}
+};
 
 function attemptLogin() {
     const input = ui.login.input.value;
@@ -80,7 +96,7 @@ function attemptLogin() {
 }
 
 ui.login.btn.onclick = attemptLogin;
-ui.login.input.addEventListener('keypress', (e) => {
+ui.login.input.addEventListener('keypress', e => {
     if (e.key === 'Enter') attemptLogin();
 });
 
@@ -99,13 +115,14 @@ function initAdmin() {
             }
 
             if (target === 'ALL') {
-                ALL_DIVISIONS.forEach(div => sendToFirebase(div, msg));
+                showConfirm('Broadcast', 'Kirim pesan ke SEMUA divisi?', () => {
+                    ALL_DIVISIONS.forEach(div => sendToFirebase(div, msg));
+                });
             } else {
-                sendToFirebase(target, msg);
+                showConfirm('Konfirmasi', `Kirim ke ${target}?`, () => {
+                    sendToFirebase(target, msg);
+                });
             }
-
-            ui.adminInput.value = '';
-            ui.adminInput.focus();
         };
     });
 }
@@ -121,7 +138,7 @@ function sendToFirebase(div, msg) {
 window.clearInput = function() {
     ui.adminInput.value = '';
     ui.adminInput.focus();
-}
+};
 
 function initUser(div) {
     currentDivision = div;
@@ -129,7 +146,7 @@ function initUser(div) {
     ui.views.user.classList.add('active');
     document.getElementById('user-division-name').innerText = div;
 
-    db.ref('divisions/' + div).on('value', (snap) => {
+    db.ref('divisions/' + div).on('value', snap => {
         const data = snap.val();
         if (data && data.status === 'active' && data.message) {
             ui.views.user.className = 'view bg-red active';
@@ -146,13 +163,18 @@ function initUser(div) {
 
 ui.userBtn.onclick = () => {
     if (currentDivision) {
-        db.ref('divisions/' + currentDivision).update({ status: 'confirmed', message: null });
+        db.ref('divisions/' + currentDivision).update({
+            status: 'confirmed',
+            message: null
+        });
     }
 };
 
 setTimeout(() => {
     const admin = document.querySelector('.admin-trigger');
-    admin.style.opacity = '1';
-    admin.style.color = '#111827';
-    setTimeout(() => admin.style.opacity = '0.6', 1200);
+    if (admin) {
+        admin.style.opacity = '1';
+        admin.style.color = '#111827';
+        setTimeout(() => admin.style.opacity = '0.6', 1200);
+    }
 }, 1500);
