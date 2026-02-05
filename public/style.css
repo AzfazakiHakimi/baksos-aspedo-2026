@@ -155,17 +155,13 @@ button {
     position: center;
     bottom: 16px;
     right: 18px;
-
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.4px;
-
     color: #64748b;
     cursor: pointer;
-
     opacity: 0.6;
     transition: all 0.25s ease;
-
     user-select: none;
 }
 
