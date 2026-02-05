@@ -170,3 +170,10 @@ ui.userBtn.onclick = () => {
         db.ref('divisions/' + currentDivision).update({ status: 'confirmed', message: null });
     }
 };
+
+setTimeout(() => {
+    const admin = document.querySelector('.admin-trigger');
+    admin.style.opacity = '1';
+    admin.style.color = '#111827';
+    setTimeout(() => admin.style.opacity = '0.6', 1200);
+}, 1500);
